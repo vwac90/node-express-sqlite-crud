@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sqlite Test Page</title>
+</head>
+<body>
+    <h1>댓글 목록</h1>
+    <ul>
+    <% for ( comments of comments) { %>
+        <li><%= comments.id %> : <%= comments.content %> </li>
+        <form action="/update/<%= comments.id %>" method="post">
+            <input type="text" name="content">
+            <input type="submit" value="수정">
+        </form>
+        <form action="/delete/<%= comments.id %>" method="post">
+            <input type="submit" value="삭제">
+        </form>
+    <% } %>
+    </ul>
+    <hr>
+    <form action="/create" method="post">
+        <a>입력 : </a>
+        <input type="text" name="content">
+        <input type="submit" value="추가">
+    </form>
+</body>
+</html>
